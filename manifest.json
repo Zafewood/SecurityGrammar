@@ -1,0 +1,32 @@
+{
+    "manifest_version": 3,
+    "name": "Precogs - Credit Card Detector",
+    "version": "1.0",
+    "permissions": ["scripting", "activeTab"],
+    "description": "A minimal extension which demonstrates how to create a extension with Gmail.JS and NodeJS-based bundling.",
+    "author": "Trygve Nummedal Os <trygvenos@gmail.com>",
+    "content_scripts": [
+        {
+            "matches": [ "*://mail.google.com/*" ],
+            "js": [
+                "src/extensionInjector.js"
+            ],
+            "run_at": "document_start"
+        }
+    ],
+
+    "web_accessible_resources": [{
+        "resources": [
+            "dist/gmailJsLoader.js",
+            "dist/content.js",
+            "dist/gmailJsLoader.js.map",
+            "dist/content.js.map",
+            "bin.json",
+            "styles.css"
+        ],
+        "matches": ["<all_urls>"]
+    }],
+    "host_permissions": [
+        "https://*/*"
+    ]
+}
